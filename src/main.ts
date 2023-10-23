@@ -7,8 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('My API title')
-    .setDescription('API description')
+    .setTitle('Library Management API')
+    .setDescription('API for managing library\'s book catalog, loans, and readers using Nest.js and Sequelize ORM. ')
     .setVersion('1.0')
     // .addTag('tag-name') // Optional: You can set tags for your routes
     .build();
