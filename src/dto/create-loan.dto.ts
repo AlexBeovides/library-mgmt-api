@@ -1,5 +1,13 @@
+import { IsInt, IsDate, IsOptional } from 'class-validator';
+
 export class CreateLoanDto {
-    bookId: number;
-    readerId: number;
-  }
-  
+  @IsInt()
+  bookId: number;
+
+  @IsInt()
+  readerId: number;
+
+  @IsDate()
+  @IsOptional()
+  date?: Date;
+}
