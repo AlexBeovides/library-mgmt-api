@@ -1,6 +1,6 @@
 // app.module.ts
-import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
+import { Module ,OnModuleInit } from '@nestjs/common';
+import { SequelizeModule , InjectModel } from '@nestjs/sequelize';
 import { Book } from './models/book.model';
 import { Loan } from './models/loan.model';
 import { Reader } from './models/reader.model';
@@ -20,4 +20,24 @@ import { LoanController } from './loan/loan.controller';
   controllers: [BookController, LoanController],
   providers: [BookService, LoanService],
 })
-export class AppModule {}
+// export class AppModule {}
+
+export class AppModule implements OnModuleInit {
+  constructor(@InjectModel(Reader) private readonly readerModel: typeof Reader) {}
+
+  async onModuleInit() {      // if there are not 2 readers, create them
+    const count = await this.readerModel.count();
+
+    if (count < 2) {
+      // Create two default readers, adjust data as needed
+      await this.readerModel.bulkCreate([
+        { name: 'Default Reader 1' },
+        { name: 'Default Reader 2' },
+      ]);
+    }
+  }
+}
+
+
+
+

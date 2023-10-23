@@ -10,7 +10,7 @@ async function bootstrap() {
     .setTitle('Library Management API')
     .setDescription('API for managing library\'s book catalog, loans, and readers using Nest.js and Sequelize ORM. ')
     .setVersion('1.0')
-    // .addTag('tag-name') // Optional: You can set tags for your routes
+    // .addTag('tag-name') //  You can set tags for your routes
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
