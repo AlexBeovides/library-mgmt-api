@@ -18,6 +18,7 @@ export class Loan extends Model {
   @Column({ type: DataType.INTEGER.UNSIGNED })
   readerId: number;
 
-  @Column({ type: DataType.DATE })
+  @Column({ type: DataType.DATE,
+    defaultValue: DataType.NOW })
   date: Date;
 }
